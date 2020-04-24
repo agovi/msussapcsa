@@ -1,3 +1,9 @@
+- name: Create virtual network "{{ cidrvnet }}"
+  azure_rm_virtualnetwork:
+    resource_group: "{{ infrarg }}"
+    name: "{{ infravnet }}"
+    address_prefixes: "{{ cidrvnet }}"
+
 - name: Add subnet "{{ infrasubnet }}"
   azure_rm_subnet:
     resource_group: "{{ infrarg }}"
