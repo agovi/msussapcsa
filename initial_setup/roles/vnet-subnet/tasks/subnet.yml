@@ -1,0 +1,7 @@
+- name: Add subnet
+  azure_rm_subnet:
+    resource_group: "{{ infrarg }}"
+    name: "{{ infrasubnet}}"
+    address_prefix: "{{ cidrrange }}"""11.0.1.0/24"
+    virtual_network: ansiblevnet"{{ infravnet}}""
+    security_group: ansiblensg
