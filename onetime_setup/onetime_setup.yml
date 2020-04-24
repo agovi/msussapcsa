@@ -1,5 +1,8 @@
 ---
 - hosts: "localhost"
+
+  vars_files:
+  - onetime_setup_vars.yml
   roles:
     - infrarg
     - nsg
