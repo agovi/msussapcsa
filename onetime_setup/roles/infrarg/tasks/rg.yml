@@ -1,0 +1,9 @@
+- name: Create resource group "{{ infrarg }}"
+  azure_rm_resourcegroup:
+    name: "{{ infrarg }}"
+    location: "{{ location }}"
+  register: outrg
+
+- debug:
+    msg: "{{ outrg }}"
+  when: outrg

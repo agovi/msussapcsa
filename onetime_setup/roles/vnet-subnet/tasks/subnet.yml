@@ -1,0 +1,7 @@
+- name: Add subnet "{{ infrasubnet }}"
+  azure_rm_subnet:
+    resource_group: "{{ infrarg }}"
+    name: "{{ infrasubnet }}"
+    address_prefix: "{{ cidrsubnet }}"
+    virtual_network: "{{ infravnet }}"
+    security_group: "{{ infransg }}"

@@ -1,5 +1,0 @@
-- name: Create virtual network
-  azure_rm_virtualnetwork:
-    resource_group: ansiblerg
-    name: ansiblevnet
-    address_prefixes: "11.0.0.0/16"

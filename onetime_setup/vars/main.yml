@@ -1,0 +1,7 @@
+location: "westus2"
+infrarg: ansiblerg
+infransg: ansiblensg
+infrasubnet: ansiblesubnet
+infravnet: ansiblevnet
+cidrvnet: "11.0.0.0/16"
+cidrsubnet: "11.0.1.0/24"
