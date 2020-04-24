@@ -9,3 +9,9 @@
         access: Allow
         priority: 1001
         direction: Inbound
+
+  register: outnsg
+
+- debug:
+    msg: "{{ outnsg }}"
+  when: outnsg
