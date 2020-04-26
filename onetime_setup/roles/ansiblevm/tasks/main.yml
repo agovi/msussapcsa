@@ -1,0 +1,56 @@
+- name: Create Azure VM
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: Create resource group
+    azure_rm_resourcegroup:
+      name: nwjava2
+      location: westus2
+  - name: Create virtual network interface card
+    azure_rm_networkinterface:
+      resource_group: nwjava2
+      name: nwjava2NIC
+      create_with_security_group: no
+      enable_accelerated_networking : yes
+      virtual_network: {'resource_group': 'azsap','name': 'azsapspoke'}
+      subnet: 'azsapspoke'
+
+  - name: Create VM
+    azure_rm_virtualmachine:
+      resource_group: nwjava2
+      name: nwjava2
+      vm_size: Standard_E16s_v3
+      admin_username: sapadmin
+      ssh_password_enabled: false
+      ssh_public_keys:
+        - path: /home/sapadmin/.ssh/authorized_keys
+          key_data: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVPYGjq+4rETH4ZX/DEkkjKf0BOFGgaEFoum1uH4QgnzlrSHVOlKpP38OfJQvCMHCJFbFYmrB3mRRPoChM+cR70r+OdxSsDblLHe2umpny3nz2BuyrH3gNzTppACnuC3z2Cf+rk9G1D4bTFfpMgV0yoxUvehSoQ3LFDBrZr19Fe9kaocU/K445Ud98KOqj2JNanL2UJQHnfNU07Wbwm5oEiaSTuB+4x5/kAT7jmhdzgCJs2RaVi5qjO6AqJ8fAx8S671BH61OkUs6iph96ya9TJOS2c80d3HiMm5ruVJVk9b1hnSHikQzFm3nMj51IG9zGqZ2Tol9h5N0y4y6iDoS3"
+      network_interfaces: nwjava2NIC
+      managed_disk_type: Premium_LRS
+      image:
+        offer: RHEL-SAP-HA
+        publisher: RedHat
+        sku: '7.7'
+        version: latest
+      data_disks:
+        - lun: 0
+          disk_size_gb: 128
+          managed_disk_type: Premium_LRS
+        - lun: 1
+          disk_size_gb: 128
+          managed_disk_type: Premium_LRS
+        - lun: 2
+          disk_size_gb: 128
+          managed_disk_type: Premium_LRS
+        - lun: 3
+          disk_size_gb: 128
+          managed_disk_type: Premium_LRS
+        - lun: 4
+          disk_size_gb: 128
+          managed_disk_type: Premium_LRS
+        - lun: 5
+          disk_size_gb: 128
+          managed_disk_type: Premium_LRS
+        - lun: 6
+          disk_size_gb: 128
+          managed_disk_type: Premium_LRS

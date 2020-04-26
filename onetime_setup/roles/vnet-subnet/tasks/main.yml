@@ -18,6 +18,5 @@
     security_group: "{{ infransg }}"
   register: outsubnet
 
-  - debug:
+- debug:
     msg: "{{ outsubnet }}"
-  when: outsubnet
