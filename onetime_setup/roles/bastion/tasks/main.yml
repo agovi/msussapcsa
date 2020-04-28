@@ -1,0 +1,31 @@
+- name: Add subnet "{{ infrabastion }}"
+  azure_rm_subnet:
+    resource_group: "{{ infrarg }}"
+    name: "{{ infrabastion }}"
+    address_prefix: "{{ cidrbastion }}"
+    virtual_network: "{{ infravnet }}"
+    security_group: "{{ infransg }}"
+  register: outbastion
+
+- debug:
+    msg: "{{ outbastion }}"
+
+
+- name: Create public IP address
+  azure_rm_publicipaddress:
+    resource_group: "{{ infrarg }}"
+    allocation_method: Static
+    name: "{{ bastionpip }}"
+  register: baspip
+
+- debug:
+    msg: "{{ baspip }}"
+
+- name: Install Bastion Services "{{ bastionname }}"
+  command: >
+     az network bastion create 
+     --name $bastionname 
+     --public-ip-address $bastionpip
+     --resource-group $infrarg 
+     --vnet-name $infravnet 
+     --location $location
