@@ -16,6 +16,7 @@
     resource_group: "{{ infrarg }}"
     allocation_method: Static
     name: "{{ bastionpip }}"
+    sku: standard
   register: baspip
 
 - debug:
@@ -24,8 +25,8 @@
 - name: Install Bastion Services "{{ bastionname }}"
   command: >
      az network bastion create 
-     --name $bastionname 
-     --public-ip-address $bastionpip
-     --resource-group $infrarg 
-     --vnet-name $infravnet 
-     --location $location
+     --name "{{ bastionname }}" 
+     --public-ip-address "{{ bastionpip }}"
+     --resource-group "{{ infrarg }}" 
+     --vnet-name "{{ infravnet }}" 
+     --location "{{ location }}"
