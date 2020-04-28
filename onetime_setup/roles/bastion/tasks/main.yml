@@ -4,7 +4,7 @@
     name: "{{ infrabastion }}"
     address_prefix: "{{ cidrbastion }}"
     virtual_network: "{{ infravnet }}"
-    security_group: "{{ infransg }}"
+#    security_group: "{{ infransg }}"
   register: outbastion
 
 - debug:
