@@ -7,3 +7,4 @@
     - infrarg
     - nsg
     - vnet-subnet
+    - bastion
