@@ -6,6 +6,9 @@ infravnet: ansiblevnet
 cidrvnet: "11.0.0.0/16"
 cidrsubnet: "11.0.1.0/24"
 
+# Diagnoistics Storage account 
+diagaccount: cvxvmdiag
+
 # Bastion subnet info
 infrabastion: AzureBastionSubnet
 cidrbastion: "11.0.2.0/24"
