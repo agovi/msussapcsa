@@ -8,6 +8,7 @@ cidrsubnet: "11.0.1.0/24"
 
 # Diagnoistics Storage account 
 diagaccount: cvxvmdiag
+acc_type: Premium_LRS
 
 # Bastion subnet info
 infrabastion: AzureBastionSubnet
