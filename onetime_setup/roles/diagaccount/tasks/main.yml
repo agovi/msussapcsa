@@ -1,6 +1,7 @@
 - name: Create diagnoistics storage account for VM
   azure_rm_storageaccount:
     name: "{{ diagaccount }}"
+    resource_group: "{{ infrarg }}"
     location: "{{ location }}"
   register: diagacc
 
