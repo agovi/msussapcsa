@@ -3,7 +3,7 @@
     name: "{{ diagaccount }}"
     resource_group: "{{ infrarg }}"
     location: "{{ location }}"
-    account_type: "{{ Premium_LRS }}""
+    account_type: "{{ Premium_LRS }}"
   register: diagacc
 
 - debug:
