@@ -27,18 +27,18 @@
 
 - name: Create DR virtual network "{{ cidrvnetdr }}"
   azure_rm_virtualnetwork:
-    resource_group: "{{ infrarg }}"
+    resource_group: "{{ infrargdr }}"
     name: "{{ infravnetdr }}"
     address_prefixes: "{{ cidrvnetdr }}"
   register: outvnetdr
 
 - debug:
     msg: "{{ outvnetdr }}"
-  when: outvnet
+  when: outvnetdr
 
 - name: Add DR subnet "{{ infrasubnetdr }}"
   azure_rm_subnet:
-    resource_group: "{{ infrarg }}"
+    resource_group: "{{ infrargdr }}"
     name: "{{ infrasubnetdr }}"
     address_prefix: "{{ cidrsubnetdr }}"
     virtual_network: "{{ infravnetdr }}"
@@ -56,7 +56,7 @@
     virtual_network: infravnet
     name: wus2_to_eus2
     remote_virtual_network:
-      resource_group: infrarg
+      resource_group: infrargdr
       name: infravnetdr
     allow_virtual_network_access: true
     allow_forwarded_traffic: false

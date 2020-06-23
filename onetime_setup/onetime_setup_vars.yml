@@ -9,8 +9,8 @@ cidrvnet: "11.0.0.0/16"
 cidrsubnet: "11.0.1.0/24"
 
 # DR Region - East US2
-location: "eastus2"
-infransg: ansiblensgdr
+locationdr: "eastus2"
+infransgdr: ansiblensgdr
 infrasubnetdr: ansiblesubnetdr
 infravnetdr: ansiblevnetdr
 cidrvnetdr: "11.1.0.0/16"

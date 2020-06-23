@@ -7,3 +7,13 @@
 - debug:
     msg: "{{ outrg }}"
   when: outrg
+
+- name: Create DR resource group "{{ infrargdr }}"
+  azure_rm_resourcegroup:
+    name: "{{ infrargdr }}"
+    location: "{{ locationdr }}"
+  register: outrgdr
+
+- debug:
+    msg: "{{ outrgdr }}"
+  when: outrgdr
