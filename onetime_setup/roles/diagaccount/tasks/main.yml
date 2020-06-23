@@ -1,6 +1,11 @@
+resource "random_integer" "sa_num" {
+  min = 10000
+  max = 99999
+}
+
 - name: Create diagnoistics storage account for VM
   azure_rm_storageaccount:
-    name: "{{ diagaccount }}"
+    name: "{{ diagaccount }}{{ 10000 | random }}"
     resource_group: "{{ infrarg }}"
     location: "{{ location }}"
     account_type: "{{ acc_type }}"
