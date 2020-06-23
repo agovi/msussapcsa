@@ -1,3 +1,5 @@
+####   Primary Vnet/Subnet Setup
+
 - name: Create virtual network "{{ cidrvnet }}"
   azure_rm_virtualnetwork:
     resource_group: "{{ infrarg }}"
@@ -20,3 +22,42 @@
 
 - debug:
     msg: "{{ outsubnet }}"
+
+####   DR Vnet/Subnet Setup
+
+- name: Create DR virtual network "{{ cidrvnetdr }}"
+  azure_rm_virtualnetwork:
+    resource_group: "{{ infrarg }}"
+    name: "{{ infravnetdr }}"
+    address_prefixes: "{{ cidrvnetdr }}"
+  register: outvnetdr
+
+- debug:
+    msg: "{{ outvnetdr }}"
+  when: outvnet
+
+- name: Add DR subnet "{{ infrasubnetdr }}"
+  azure_rm_subnet:
+    resource_group: "{{ infrarg }}"
+    name: "{{ infrasubnetdr }}"
+    address_prefix: "{{ cidrsubnetdr }}"
+    virtual_network: "{{ infravnetdr }}"
+    security_group: "{{ infransgdr }}"
+  register: outsubnetdr
+
+- debug:
+    msg: "{{ outsubnetdr }}"
+
+# Global Vnet Peering 
+
+- name: Create virtual network peering - West US2 to East US2
+  azure_rm_virtualnetworkpeering:
+    resource_group: infrarg
+    virtual_network: infravnet
+    name: wus2_to_eus2
+    remote_virtual_network:
+      resource_group: infrarg
+      name: infravnetdr
+    allow_virtual_network_access: true
+    allow_forwarded_traffic: false
+

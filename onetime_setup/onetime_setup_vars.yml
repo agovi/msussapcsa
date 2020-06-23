@@ -1,3 +1,5 @@
+# Primary Region - West US2
+
 location: "westus2"
 infrarg: ansiblerg
 infransg: ansiblensg
@@ -5,6 +7,16 @@ infrasubnet: ansiblesubnet
 infravnet: ansiblevnet
 cidrvnet: "11.0.0.0/16"
 cidrsubnet: "11.0.1.0/24"
+
+# DR Region - East US2
+location: "eastus2"
+infransg: ansiblensgdr
+infrasubnetdr: ansiblesubnetdr
+infravnetdr: ansiblevnetdr
+cidrvnetdr: "11.1.0.0/16"
+cidrsubnetdr: "11.1.1.0/24"
+
+
 
 # Diagnoistics Storage account 
 diagaccount: vmdiag
