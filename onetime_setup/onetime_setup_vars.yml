@@ -10,6 +10,7 @@ cidrsubnet: "11.0.1.0/24"
 
 # DR Region - East US2
 locationdr: "eastus2"
+infrargdr: ansiblergdr
 infransgdr: ansiblensgdr
 infrasubnetdr: ansiblesubnetdr
 infravnetdr: ansiblevnetdr

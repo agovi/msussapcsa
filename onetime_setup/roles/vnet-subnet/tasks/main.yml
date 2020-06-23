@@ -52,12 +52,23 @@
 
 - name: Create virtual network peering - West US2 to East US2
   azure_rm_virtualnetworkpeering:
-    resource_group: infrarg
-    virtual_network: infravnet
+    resource_group: "{{ infrarg }}"
+    virtual_network: "{{ infravnet }}"
     name: wus2_to_eus2
     remote_virtual_network:
-      resource_group: infrargdr
-      name: infravnetdr
+      resource_group: "{{ infrargdr }}"
+      name: "{{ infravnetdr }}"
+    allow_virtual_network_access: true
+    allow_forwarded_traffic: false
+
+- name: Create virtual network peering - East US2 to West US2
+  azure_rm_virtualnetworkpeering:
+    resource_group: "{{ infrargdr }}"
+    virtual_network: "{{ infravnetdr }}"
+    name: eus2_to_wus2
+    remote_virtual_network:
+      resource_group: "{{ infrargd }}"
+      name: "{{ infravnetd }}"
     allow_virtual_network_access: true
     allow_forwarded_traffic: false
 
