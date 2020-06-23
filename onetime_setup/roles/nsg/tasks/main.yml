@@ -15,3 +15,21 @@
 - debug:
     msg: "{{ outnsg }}"
   when: outnsg
+
+  - name: Create DR Network Security Group "{{ infransg }}" that allows SSH
+  azure_rm_securitygroup:
+    resource_group: "{{ infrarg }}"
+    name: "{{ infransgdr }}"
+    rules:
+      - name: SSH
+        protocol: Tcp
+        destination_port_range: 22
+        access: Allow
+        priority: 1001
+        direction: Inbound
+
+  register: outnsg
+
+- debug:
+    msg: "{{ outnsgdr }}"
+  when: outnsgdr
