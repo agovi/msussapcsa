@@ -67,8 +67,8 @@
     virtual_network: "{{ infravnetdr }}"
     name: eus2_to_wus2
     remote_virtual_network:
-      resource_group: "{{ infrargd }}"
-      name: "{{ infravnetd }}"
+      resource_group: "{{ infrarg }}"
+      name: "{{ infravnet }}"
     allow_virtual_network_access: true
     allow_forwarded_traffic: false
 
