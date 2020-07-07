@@ -7,5 +7,5 @@
     - infrarg
     - nsg
     - vnet-subnet
-    - diagaccount
+#    - diagaccount
 #    - bastion
