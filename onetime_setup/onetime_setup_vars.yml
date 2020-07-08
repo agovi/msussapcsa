@@ -1,19 +1,19 @@
 # Primary Region - West US2
 
 location: "westus2"
-infrarg: ansiblerg
-infransg: ansiblensg
-infrasubnet: ansiblesubnet
-infravnet: ansiblevnet
+infrarg: infrarg
+infransg: infransg
+infrasubnet: sapsubnet
+infravnet: sapevnet
 cidrvnet: "11.0.0.0/16"
 cidrsubnet: "11.0.1.0/24"
 
 # DR Region - East US2
 locationdr: "eastus2"
-infrargdr: ansiblergdr
-infransgdr: ansiblensgdr
-infrasubnetdr: ansiblesubnetdr
-infravnetdr: ansiblevnetdr
+infrargdr: infrargdr
+infransgdr: infransgdr
+infrasubnetdr: infrasubnetdr
+infravnetdr: infravnetdr
 cidrvnetdr: "11.1.0.0/16"
 cidrsubnetdr: "11.1.1.0/24"
 
