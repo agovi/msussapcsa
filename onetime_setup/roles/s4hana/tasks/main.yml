@@ -1,0 +1,4 @@
+- name: Provision S4 HANA VMs
+  shell: ~/handsonlab-vm-creation.sh >./handsonlab-vm-creation.out
+    args:
+    chdir: ~
